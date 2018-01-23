@@ -12,10 +12,13 @@ namespace MetadataTypeExample
 
         static async Task Main(string[] args)
         {   
-            var aa = await ProcessRepositories();
-            Console.WriteLine(aa);
+            var resultData = await ProcessRepositories();           
+            Example example = JsonConvert.DeserializeObject<Example>(resultData);
 
-            Example example = JsonConvert.DeserializeObject<Example>(aa);
+            foreach (Result result in example.Results)
+            {
+                Console.WriteLine($"{result.Id.Value}-{result.Name.Title}.{result.Name.First} {result.Name.Last} [{result.Email}] {result.Dob}");
+            }
         }
 
         private static async Task<string> ProcessRepositories()
