@@ -21,7 +21,7 @@ namespace MetadataTypeExample
         private static async Task<string> ProcessRepositories()
         {
             Client.DefaultRequestHeaders.Accept.Clear();
-            Client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+            Client.DefaultRequestHeaders.Add("User-Agent", "Async Main Method Test");
 
             var stringTask = await Client.GetStringAsync("https://randomuser.me/api/?results=5");
             return stringTask;
